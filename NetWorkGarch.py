@@ -25,6 +25,7 @@ class PortfolioModel(nn.Module):
 class Subnetwork(nn.Module):
     def __init__(self, P, K, lb, ub,Rf, batch_size, alpha,omega,beta,mu):
         super(Subnetwork, self).__init__()
+        self.P = P
         self.Rf = Rf
         self.lb = lb
         self.ub = ub
@@ -43,7 +44,7 @@ class Subnetwork(nn.Module):
 
     def forward(self, x1, x2):
         self.R = torch.Tensor(self.R)
-        curr_cov = torch.zeros((self.batch_size, P,P))
+        curr_cov = torch.zeros((self.batch_size, self.P,self.P))
         state_variable= x1 
         prev_cov = x2      
         for b in range(self.batch_size):
