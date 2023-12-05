@@ -2,7 +2,7 @@ import torch
 import numpy as np
 from NetWorkAR import PortfolioModel
 from utility import UtilityLoss
-from ModelGARCH import Optimize
+from ModelAR import Optimize
 
 x_train_0 = torch.tensor([1])
 x_train_1 = torch.tensor([1, 1, 1, 1, 1])
