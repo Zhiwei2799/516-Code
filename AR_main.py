@@ -26,7 +26,7 @@ cov = np.array([[0.0238, 0.0027, 0.0027, 0.0027, 0.0027],
 R_neg1 = np.linalg.inv(np.eye(P) - A)@alpha
 R_neg1
 Rf = 1.03 
-M = 20000 # number of path 
+M = num_simulations # number of path 
 lb =0 
 ub = 0.5
 save_path = 'model_epoch_10AR.pth'
@@ -34,7 +34,7 @@ max_epoch = 10
 batch_size = 64
 trainer = Optimize(P, cov, K, lb, ub, Rf, batch_size, alpha, A)
 trainer.train(x_train_0,x_train_1, max_epoch,batch_size,save_path)
-x_test = torch.ones((20000))  
-batch_size = 20000
+x_test = torch.ones((M))  
+batch_size = M
 trainer = Optimize(P, cov, K, lb, ub, Rf, batch_size, alpha, A)
 trainer.test(x_test, save_path)
