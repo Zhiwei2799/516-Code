@@ -43,7 +43,7 @@ class Subnetwork(nn.Module):
 
     def forward(self, x1, x2):
         self.R = torch.Tensor(self.R)
-        curr_cov = torch.zeros((batch_size, P,P))
+        curr_cov = torch.zeros((self.batch_size, P,P))
         state_variable= x1 
         prev_cov = x2      
         for b in range(self.batch_size):
