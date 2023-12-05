@@ -11,7 +11,6 @@ class Optimize(nn.Module):
         self.model = PortfolioModel(P, K, lb, ub, Rf, batch_size, alpha, omega, beta, mu)
         self.criterion = UtilityLoss()
         self.optimizer = optim.Adam(self.model.parameters())
-        self.score = Outsample_score()
 
     def train(self, x_train_0, x_train_1, max_epoch, batch_size, save_path):
         self.model.train()
