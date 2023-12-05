@@ -1,3 +1,10 @@
+import torch
+import numpy as np
+from NetWorkGarch import PortfolioModel
+from utility import UtilityLoss
+from ModelAR_GARCH import Optimize
+
+
 input1 = torch.ones(1000,1)  # Assuming 10 samples and 5 features for input1
 input2 = torch.randn(1000,5, 5)  # Assuming 10 samples, 5 assets, and 5 features for input2
 
