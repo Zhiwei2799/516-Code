@@ -30,8 +30,11 @@ class Subnetwork(nn.Module):
         self.lb = lb
         self.ub = ub
         self.alpha = alpha 
+        self.omega = omega
+        self.beta = beta
+        self.mu = mu 
         self.batch_size = batch_size
-        self.R = np.zeros((batch_size, P))
+        self.R = torch.zeros((batch_size, P))
         self.subnetwork = nn.Sequential(
             nn.Linear(5, 5, bias=False),
             nn.Tanh(),
@@ -43,14 +46,13 @@ class Subnetwork(nn.Module):
         )
 
     def forward(self, x1, x2):
-        self.R = torch.Tensor(self.R)
         curr_cov = torch.zeros((self.batch_size, self.P,self.P))
         state_variable= x1 
         prev_cov = x2      
         for b in range(self.batch_size):
             epsilon = torch.Tensor(np.random.multivariate_normal(mean=np.zeros(self.P), cov=np.identity(self.P)))
-            curr_cov[b,:,:] = omega + alpha*prev_cov[b,:,:]+beta*(prev_cov[b,:,:]@epsilon)**2
-            self.R[b, :] = mu + prev_cov[b,:,:]@ epsilon
+            curr_cov[b,:,:] = self.omega + self.alpha*prev_cov[b,:,:]+self.beta*(prev_cov[b,:,:]@epsilon)**2
+            self.R[b, :] = self.mu + prev_cov[b,:,:]@ epsilon
         out = self.R
         weights = self.subnetwork(out)
 #         print("weights before rebalancing:", weights.detach().numpy())
