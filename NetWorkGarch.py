@@ -9,7 +9,6 @@ class PortfolioModel(nn.Module):
         super(PortfolioModel, self).__init__()
         self.K = K
         self.Rf = Rf
-        self.cov = cov
         self.batch_size = batch_size
         self.alpha = alpha 
         self.A = A
@@ -31,7 +30,6 @@ class Subnetwork(nn.Module):
         self.lb = lb
         self.ub = ub
         self.alpha = alpha 
-        self.cov = cov
         self.batch_size = batch_size
         self.A = torch.Tensor(A)  
         self.R = torch.zeros((batch_size, P))  
