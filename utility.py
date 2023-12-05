@@ -1,3 +1,5 @@
+import torch
+
 class UtilityLoss(torch.nn.Module):
     def __init__(self):
         super(UtilityLoss, self).__init__()
