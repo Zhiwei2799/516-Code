@@ -1,6 +1,6 @@
 import torch
 import numpy as np
-from NetWorkGarch import PortfolioModel
+from NetWorkGarch import *
 from utility import UtilityLoss
 from ModelGarch import Optimize
 
