@@ -4,7 +4,7 @@ import torch.nn as nn
 from torch import Tensor
 
 
-class PortfolioModelGarch(nn.Module):
+class PortfolioModel(nn.Module):
     def __init__(self, P, K, lb, ub,Rf,batch_size,alpha,omega,beta,mu):
         super(PortfolioModel, self).__init__()
         self.K = K
