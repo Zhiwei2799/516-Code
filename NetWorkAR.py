@@ -53,7 +53,7 @@ class Subnetwork(nn.Module):
         prev_R = x2      
         for b in range(self.batch_size):
             epsilon = np.random.multivariate_normal(mean=np.zeros(self.P), cov=self.cov)
-            self.R[b, :] = torch.Tensor(self.alpha) + torch.Tensor(selk.A) @ prev_R[b, :] + torch.Tensor(epsilon)
+            self.R[b, :] = torch.Tensor(self.alpha) + torch.Tensor(self.A) @ prev_R[b, :] + torch.Tensor(epsilon)
         out = self.R
         weights = self.subnetwork(out)
 #         print("weights before rebalancing:", weights.detach().numpy())
