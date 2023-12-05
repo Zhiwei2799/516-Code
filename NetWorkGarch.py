@@ -48,7 +48,7 @@ class Subnetwork(nn.Module):
         state_variable= x1 
         prev_cov = x2      
         for b in range(self.batch_size):
-            epsilon = torch.Tensor(np.random.multivariate_normal(mean=np.zeros(P), cov=self.cov))
+            epsilon = torch.Tensor(np.random.multivariate_normal(mean=np.zeros(self.P), cov=self.cov))
             curr_cov[b,:,:] = omega + alpha*prev_cov[b,:,:]+beta*(prev_cov[b,:,:]@epsilon)**2
             self.R[b, :] = mu + prev_cov[b,:,:]@ epsilon
         out = self.R
