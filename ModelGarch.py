@@ -6,11 +6,12 @@ from NetWorkGarch import *
 from utility import *
 
 class Optimize(nn.Module):
-    def __init__(self, P, cov, Lambda, Delta, K, lb, ub, Rf, batch_size):
+    def __init__(self, P, K, lb, ub, Rf, batch_size, alpha, omega, beta, mu):
         super (Optimize, self).__init__()
-        self.model = PortfolioModel(P, cov, Lambda, Delta, K, lb, ub, Rf, batch_size)
+        self.model = PortfolioModel(P, K, lb, ub, Rf, batch_size, alpha, omega, beta, mu)
         self.criterion = UtilityLoss()
         self.optimizer = optim.Adam(self.model.parameters())
+        self.score = Outsample_score()
 
     def train(self, x_train_0, x_train_1, max_epoch, batch_size, save_path):
         self.model.train()
