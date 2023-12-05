@@ -3,6 +3,8 @@ import torch.nn as nn
 import torch.optim as optim
 import time
 from NetWorkAR import *
+from utility import *
+
 class Optimize(nn.Module):
     def __init__(self, P, cov, Lambda, Delta, K, lb, ub, Rf, batch_size):
         super (Optimize, self).__init__()
