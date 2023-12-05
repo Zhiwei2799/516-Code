@@ -2,7 +2,7 @@ import torch
 import numpy as np
 from NetWorkGarch import PortfolioModel
 from utility import UtilityLoss
-from ModelAR_GARCH import Optimize
+from ModelGARCH import Optimize
 
 
 input1 = torch.ones(1000,1)  # Assuming 10 samples and 5 features for input1
