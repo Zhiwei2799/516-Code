@@ -27,6 +27,7 @@ class PortfolioModel(nn.Module):
 class Subnetwork(nn.Module):
     def __init__(self, P, cov, K, lb, ub,Rf, batch_size, alpha,A):
         super(Subnetwork, self).__init__()
+        self.P = P
         self.Rf = Rf
         self.lb = lb
         self.ub = ub
@@ -51,8 +52,8 @@ class Subnetwork(nn.Module):
         state_variable= x1 
         prev_R = x2      
         for b in range(self.batch_size):
-            epsilon = np.random.multivariate_normal(mean=np.zeros(P), cov=self.cov)
-            self.R[b, :] = torch.Tensor(self.alpha) + torch.Tensor(A) @ prev_R[b, :] + torch.Tensor(epsilon)
+            epsilon = np.random.multivariate_normal(mean=np.zeros(self.P), cov=self.cov)
+            self.R[b, :] = torch.Tensor(self.alpha) + torch.Tensor(selk.A) @ prev_R[b, :] + torch.Tensor(epsilon)
         out = self.R
         weights = self.subnetwork(out)
 #         print("weights before rebalancing:", weights.detach().numpy())
