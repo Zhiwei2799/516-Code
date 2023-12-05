@@ -17,7 +17,10 @@ class PortfolioModel(nn.Module):
 #         print('initial portfolio wealth: 1')
         for i in range(self.K):
 #             print('subnetwork {}'.format(i))
-            inputs = self.stack_layers[i](inputs)            
+            inputs = self.stack_layers[i](inputs)
+            if i == 1:
+                score = (inputs.detach().numpy().mean()*np.exp(0.03/40)**-1 - 2)**2
+                return inputs.detach().numpy().mean()
         return inputs
 
 class Subnetwork(nn.Module):
