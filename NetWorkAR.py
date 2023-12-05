@@ -3,7 +3,7 @@ import torch.nn as nn
 from torch import Tensor
 
 
-class PortfolioModelAR(nn.Module):
+class PortfolioModel(nn.Module):
     def __init__(self, P, cov, K, lb, ub,Rf,batch_size,alpha,A):
         super(PortfolioModel, self).__init__()
         self.K = K
