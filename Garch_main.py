@@ -19,6 +19,7 @@ alpha=3
 omega =3
 beta = 3
 mu = torch.Tensor((0.05,0.05,0.05,0.05,0.05))
-
+save_path = 'model_epoch_10garch.pth'
+max_epoch = 10
 trainer = Optimize(P, K, lb, ub, Rf, batch_size, alpha, omega, beta, mu)
 trainer.train(input1, input2, max_epoch,batch_size,save_path)
