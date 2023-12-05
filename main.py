@@ -1,9 +1,8 @@
 import torch
 import numpy as np
-from Network import PortfolioModel
-from loss import UtilityLoss 
-
-x_train = torch.ones((20000, 1))  
+from NetWork import PortfolioModel
+from utility import UtilityLoss
+from Model import Optimize
 
 P = 5 # number of stocks
 cov = np.array([[0.15, 0.01, 0.01, 0.01, 0.01],
@@ -20,12 +19,15 @@ M = 20000 # number of path
 lb =0 
 ub = 0.5
 save_path = 'model_epoch_100.pth'
-max_epoch = 10
+max_epoch = 100
 batch_size = 64
+x_train = torch.ones((M, 1))  
+
 trainer = Optimize(r, P, cov, Lambda, Delta, K, lb, ub, Rf, batch_size)
 trainer.train(x_train, max_epoch,batch_size,save_path)
-x_test = torch.ones((20000, 1))  
-
+x_test = torch.ones((M, 1)) 
+batch_size = M
+trainer = Optimize(r, P, cov, Lambda, Delta, K, lb, ub, Rf, batch_size)
 trainer.test(x_test, save_path)
 
 
