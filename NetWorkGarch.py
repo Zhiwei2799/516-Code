@@ -11,7 +11,6 @@ class PortfolioModel(nn.Module):
         self.Rf = Rf
         self.batch_size = batch_size
         self.alpha = alpha 
-        self.A = A
         self.stack_layers = nn.ModuleList()
         for i in range(K):
             self.stack_layers.append(StackLayer(P, K, lb, ub,Rf,batch_size,alpha,omega,beta,mu))
@@ -31,8 +30,6 @@ class Subnetwork(nn.Module):
         self.ub = ub
         self.alpha = alpha 
         self.batch_size = batch_size
-        self.A = torch.Tensor(A)  
-        self.R = torch.zeros((batch_size, P))  
         self.R = np.zeros((batch_size, P))
         self.subnetwork = nn.Sequential(
             nn.Linear(5, 5, bias=False),
