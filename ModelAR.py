@@ -45,7 +45,7 @@ class Optimize(nn.Module):
             if epoch % 10 == 0:
                 torch.save(self.model.state_dict(), save_path.format(epoch))
 
-    def test(self, x_test, save_path):
+    def test(self, x_test_0, x_test_1, save_path):
         print('### Testing... ###')
         self.model.eval()
         self.model.load_state_dict(torch.load(save_path))
