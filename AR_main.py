@@ -13,11 +13,11 @@ x_train_1 = x_train_1.repeat(num_simulations, 1)
 P = 30 
 alpha = np.array([0.015,0.015,0.015,0.015,0.015])
 K = 10
-A = np.array([[-0.15, 0, 0, 0, 0],
-              [0,-0.15,0,0,0],
-              [0,0,-0.15,0,0],
-              [0,0, 0,-0.15,0],
-              [0,0, 0,0,-0.15]])
+A = np.array([[0.15, 0, 0, 0, 0],
+              [0,0.15,0,0,0],
+              [0,0,0.15,0,0],
+              [0,0, 0,0.15,0],
+              [0,0, 0,0,0.15]])
 cov = np.array([[0.0238, 0.0027, 0.0027, 0.0027, 0.0027],
                 [0.0027, 0.0238, 0.0027, 0.0027, 0.0027],
                 [0.0027, 0.0027, 0.0238, 0.0027, 0.0027],
@@ -30,7 +30,7 @@ M = num_simulations # number of path
 lb =0 
 ub = 0.5
 save_path = 'model_epoch_100AR.pth'
-max_epoch = 100
+max_epoch = 10
 batch_size = 64
 trainer = Optimize(P, cov, K, lb, ub, Rf, batch_size, alpha, A)
 trainer.train(x_train_0,x_train_1, max_epoch,batch_size,save_path)
