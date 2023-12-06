@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import time
-from NetWorkAR import *
+from NetWork import *
 from utility import *
 
 class Optimize(nn.Module):
