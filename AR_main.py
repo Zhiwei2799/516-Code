@@ -36,4 +36,4 @@ trainer = Optimize(P, cov, K, lb, ub, Rf, batch_size, alpha, A)
 trainer.train(x_train_0,x_train_1, max_epoch,batch_size,save_path)
 # batch_size = M
 # trainer = Optimize(P, cov, K, lb, ub, Rf, batch_size, alpha, A)
-# trainer.test(x_test, save_path)
+# trainer.test(x_test_0, x_test_1, save_path)
