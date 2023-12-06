@@ -29,8 +29,8 @@ Rf = 1.03
 M = num_simulations # number of path 
 lb =0 
 ub = 0.5
-save_path = 'model_epoch_50AR.pth'
-max_epoch = 50
+save_path = 'model_epoch_100AR.pth'
+max_epoch = 100
 batch_size = 64
 trainer = Optimize(P, cov, K, lb, ub, Rf, batch_size, alpha, A)
 trainer.train(x_train_0,x_train_1, max_epoch,batch_size,save_path)
