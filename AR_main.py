@@ -10,7 +10,7 @@ num_simulations = 20000
 x_train_0 = x_train_0.repeat(num_simulations, 1)
 x_train_1 = x_train_1.repeat(num_simulations, 1)
 
-P = 5 
+P = 30 
 alpha = np.array([0.015,0.015,0.015,0.015,0.015])
 K = 10
 A = np.array([[-0.15, 0, 0, 0, 0],
