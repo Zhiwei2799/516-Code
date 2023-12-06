@@ -42,7 +42,7 @@ class Optimize(nn.Module):
             duration = time.time() - start_time
             loss = total_loss / num_batches
             print('Epoch {:d} Loss {:.6f} Duration {:.3f} seconds.'.format(epoch, loss, duration))
-            if epoch % 10 == 0:
+            if epoch % 50 == 0:
                 torch.save(self.model.state_dict(), save_path.format(epoch))
 
     def test(self, x_test, save_path):
