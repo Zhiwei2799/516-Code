@@ -2,8 +2,8 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import time
-from utility import UtilityLoss
-from NetWork import PortfolioModel
+from NetWorkAR import *
+from utility import *
 
 class Optimize(nn.Module):
     def __init__(self, r, P, cov, Lambda, Delta, K, lb, ub, Rf, batch_size):
