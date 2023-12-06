@@ -4,13 +4,13 @@ import torch.optim as optim
 import time
 from utility import *
 from NetWork import *
+
 class Optimize(nn.Module):
     def __init__(self, r, P, cov, Lambda, Delta, K, lb, ub, Rf, batch_size):
         super (Optimize, self).__init__()
         self.model = PortfolioModel(r, P, cov, Lambda, Delta, K, lb, ub, Rf, batch_size)
         self.criterion = UtilityLoss()
         self.optimizer = optim.Adam(self.model.parameters())
-
     def train(self, x_train, max_epoch, batch_size, save_path):
         self.model.train()
         num_samples = x_train.shape[0]
@@ -48,6 +48,7 @@ class Optimize(nn.Module):
         with torch.no_grad():
                 output = self.model(x_test)
                 loss = self.criterion(output, gamma=4)
+#                 score = self.score(output,torch.exp(torch.tensor(0.03)),gamma=4)
 #                 total_loss += loss.item()
 #         test_loss = total_loss / x_test.shape[0]
         print('Test Loss {:.6f}'.format(loss))
