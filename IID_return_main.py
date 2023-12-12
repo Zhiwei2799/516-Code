@@ -24,7 +24,7 @@ batch_size = 64
 x_train = torch.ones((M, 1))  
 
 trainer = Optimize(r, P, cov, Lambda, Delta, K, lb, ub, Rf, batch_size)
-trainer.train(x_train, max_epoch,batch_size,save_path)
+trainer.train(x_train, max_epoch, save_path)
 x_test = torch.ones((M, 1)) 
 batch_size = M
 trainer = Optimize(r, P, cov, Lambda, Delta, K, lb, ub, Rf, batch_size)
