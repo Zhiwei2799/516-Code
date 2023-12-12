@@ -8,22 +8,23 @@ from utility import *
 class Optimize(nn.Module):
     def __init__(self, P, cov, Lambda, Delta, K, lb, ub, Rf, batch_size):
         super (Optimize, self).__init__()
+        self.batch_size = batch_size
         self.model = PortfolioModel(P, cov, Lambda, Delta, K, lb, ub, Rf, batch_size)
         self.criterion = UtilityLoss()
         self.optimizer = optim.Adam(self.model.parameters())
 
-    def train(self, x_train_0, x_train_1, max_epoch, batch_size, save_path):
+    def train(self, x_train_0, x_train_1, max_epoch, save_path):
         self.model.train()
         num_samples = x_train_0.shape[0]
-        num_batches = num_samples // batch_size
+        num_batches = num_samples // self.batch_size 
 
         print('### Training... ###')
         for epoch in range(1, max_epoch + 1):
             start_time = time.time()
             total_loss = 0.0
             for i in range(num_batches):
-                start = i * batch_size
-                end = start + batch_size
+                start = i * self.batch_size 
+                end = start + self.batch_size 
                 x_batch_0 = x_train_0[start:end]
                 x_batch_0 = torch.tensor(x_batch_0, dtype=torch.float32)
                 x_batch_1 = x_train_1[start:end]
