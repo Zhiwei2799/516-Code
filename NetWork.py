@@ -38,11 +38,15 @@ class Subnetwork(nn.Module):
                     np.sqrt(Delta) * cov @ epsilon) - Rf * np.ones(P)
         self.R = torch.Tensor(self.R)
         self.subnetwork = nn.Sequential(
-            nn.Linear(5, 5, bias=False),
+            nn.Linear(5, 50, bias=False),
             nn.Tanh(),
-            nn.Linear(5, 5, bias=False),
+            nn.Linear(50, 50, bias=False),
             nn.Tanh(),
-            nn.Linear(5, 5, bias=False),
+            nn.Linear(50, 50, bias=False),
+            nn.Tanh(),
+            nn.Linear(50, 50, bias=False),
+            nn.Tanh(),
+            nn.Linear(50, 5, bias=False),
             nn.Tanh(),
             nn.Softmax(dim=1)
         )
