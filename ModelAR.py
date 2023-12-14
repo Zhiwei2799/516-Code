@@ -17,7 +17,7 @@ class Optimize(nn.Module):
         self.model.train()
         num_samples = x_train_0.shape[0]
         print(num_samples)
-        num_batches = num_samples // self.batch_size 
+        num_batches = int(num_samples // self.batch_size)
 
         print('### Training... ###')
         for epoch in range(1, max_epoch + 1):
