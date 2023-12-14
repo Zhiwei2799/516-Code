@@ -6,7 +6,7 @@ from ModelAR import Optimize
 
 x_train_0 = torch.tensor([1])
 x_train_1 = torch.tensor([1]).repeat(30)
-num_simulations = 80000
+num_simulations = 20000
 x_train_0 = x_train_0.repeat(num_simulations, 1)
 x_train_1 = x_train_1.repeat(num_simulations, 1)
 
