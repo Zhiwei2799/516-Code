@@ -15,6 +15,7 @@ class Optimize(nn.Module):
 
     def train(self, x_train_0, x_train_1, max_epoch, save_path):
         self.model.train()
+        print(num_samples)
         num_samples = x_train_0.shape[0].numpy()
         num_batches = num_samples // self.batch_size 
 
