@@ -38,11 +38,11 @@ class Subnetwork(nn.Module):
         self.R = torch.zeros((batch_size, P))  
         self.R = np.zeros((batch_size, P))
         self.subnetwork = nn.Sequential(
-            nn.Linear(50, 50, bias=False),
+            nn.Linear(30, 50, bias=False),
             nn.Tanh(),
             nn.Linear(50, 50, bias=False),
             nn.Tanh(),
-            nn.Linear(50, 50, bias=False),
+            nn.Linear(50, 30, bias=False),
             nn.Tanh(),
             nn.Softmax(dim=1)
         )
