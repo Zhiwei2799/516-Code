@@ -6,10 +6,10 @@ from NetWorkAR import *
 from utility import *
 
 class Optimize(nn.Module):
-    def __init__(self, P, cov, Lambda, Delta, K, lb, ub, Rf, batch_size, alpha, A):
+    def __init__(self, P, cov, K, lb, ub, Rf, batch_size, alpha, A):
         super (Optimize, self).__init__()
         self.batch_size = batch_size
-        self.model = PortfolioModel(P, cov, Lambda, Delta, K, lb, ub, Rf, batch_size, alpha, A)
+        self.model = PortfolioModel(P, cov, K, lb, ub, Rf, batch_size, alpha, A)
         self.criterion = UtilityLoss()
         self.optimizer = optim.Adam(self.model.parameters())
 
